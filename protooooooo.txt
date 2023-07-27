@@ -1,0 +1,90 @@
+player:
+    inventory: { items: {}, order: {} },
+    itemString: '',
+    map: 'mystery-mansion-main',
+    name: 'CalorieValerie9900',
+    x: 29,
+    y: 15,
+    direction: 7,
+    ghost: 0,
+    emote: '',
+    away: true,
+    activelySpeaking: 0,
+    lastActive: '2023-02-25T02:53:25.736Z',
+    lastInputId: 1188,
+    outfitString: '{"skin":{"id":"KPK1RNe5O32vJ8IhOicy","color":"3","name":"typical","type":"skin","subType":null,"style":null,"isDefault":true,"previewUrl":"https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/wearables/TmOICrwAjr4PZS9HM2OYi","startDate":null,"endDate":null,"parts":[{"layerId":"skin front","spritesheetId":"dQCYs4n7O99ksXuBIe33"}]},"hair":{"id":"iY23nQvDXcnvRjFBBS11","color":"blue","name":"double braids","type":"hair","subType":null,"style":null,"isDefault":true,"previewUrl":"https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/wearables/SW_aRchxhTaDwD4i4RM9f","startDate":null,"endDate":null,"parts":[{"layerId":"hair front","spritesheetId":"X3DrePSweaH2DnlzthU7"},{"layerId":"hair back","spritesheetId":"uDBRWnIGY4fMwWBgsMpD"}]},"facial_hair":null,"top":{"id":"YdhSw2oS1NOhXBZVfni4","color":"green","name":"t shirt","type":"top","subType":null,"style":null,"isDefault":true,"previewUrl":"https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/wearables/a8ujdMZ1wtvWF1wIq6zzj","startDate":null,"endDate":null,"parts":[{"layerId":"top front","spritesheetId":"woo9Pe03evXmbWWV0gS1"}]},"bottom":{"id":"qlSHEe81tS8H4HFN0lSN","color":"blue","name":"pants","type":"bottom","subType":null,"style":null,"isDefault":true,"previewUrl":"https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/wearables/s6x4AS4a9McKdvpHfDUmM","startDate":null,"endDate":null,"parts":[{"layerId":"bottom front","spritesheetId":"8IxYJmX9KwGUNSKpnJ5L"}]},"shoes":{"id":"jWRxPyatM2P0bdzSnf50","color":"black","name":"generic","type":"shoes","subType":null,"style":null,"isDefault":true,"previewUrl":"https://cdn.gather.town/storage.googleapis.com/gather-town.appspot.com/wearables/wE2kyECTzosMMoWoKO52S","startDate":null,"endDate":null,"parts":[{"layerId":"shoes front","spritesheetId":"Thh1O95hOZKq4yyTmVQD"}]},"hat":null,"glasses":null,"other":null,"costume":null,"mobility":null,"jacket":null}',
+    eventStatus: '',
+    eventStatus: '',
+    inConversation: false,
+    currentArea: '',
+    vehicleId: '',
+    speedModifier: 1,
+    isAlone: true,
+    isMobile: false,
+    followTarget: '',
+
+playerId: 'NExkiUBtSlcjeBDbXpyw7pkLKAc2',
+
+
+
+
+Two roads diverged in a yellow wood,\n
+And sorry I could not travel both\n
+And be one traveler, long I stood\n
+And looked down one as far as I could\n
+To where it bent in the undergrowth;\n
+
+I shall be telling this with a sigh\n
+Somewhere ages and ages hence:\n
+Two roads diverged in a wood, and I—\n
+I took the one less traveled by,\n
+And that has made all the difference.\n
+
+Congratulations! \n
+Today is your day.\n
+You're off to Great Places!\n
+You're off and away!\n\n
+
+You have brains in your head.\n
+You have feet in your shoes.\n
+You can steer yourself\n
+any direction you choose.\n
+You're on your own. And you know what you know.\n
+And YOU are the guy who'll decide where to go.\n
+
+Shall I compare thee to a summer’s day?\n
+Thou art more lovely and more temperate:\n
+Rough winds do shake the darling buds of May,\n
+And summer’s lease hath all too short a date;\n
+
+I only love one, after every summer
+
+
+
+
+message PlayerInteracts {
+  uint32 encId = 1;
+  string objId = 2;
+  optional string mapId = 4;
+  optional string dataJson = 3; // JSON string
+}
+message PlayerSetsWorkCondition {
+  uint32 encId = 1;
+  uint32 workCondition = 2;
+}
+PlayerSetsTextStatus playerSetsTextStatus = 18;
+PlayerSetsEmojiStatus playerSetsEmojiStatus = 19;
+PlayerSetsImagePointer playerSetsImagePointer = 54;
+MapDeleteObject mapDeleteObject = 78;
+PlayerSetsItemString playerSetsItemString = 108;
+PlayerTriggersItem playerTriggersItem = 109;
+PlayerSetsFollowTarget playerSetsFollowTarget = 110;
+PlayerSetsIsNpc playerSetsIsNpc = 113;
+PlayerSendsCommand playerSendsCommand = 121;
+PlayerTriggersInventoryItem playerTriggersInventoryItem = 133;
+
+
+
+
+
+Still feeling chilly because of the weather this season? Craving something delicious to warm you up? Order some Sop Ikan Batam for only $XX! We have opened pre-orders for pickup at St. Anselm Parish on Sunday March 26th at XX PM. This delicious In do meal is being cooked by the one and one Tante/Om XX. Simply fill DM us on Instagram to order, or text Greg or Olivia at the numbers listed in the poster. Order yours today!!!

@@ -1,0 +1,186 @@
+Puzzles
+
+A tree on table
+
+Door - Tree
+
+
+Chest- "A wise man once said "You can message through voice"... who is this fountain of wisdom?"
+    receive:
+       Note: "Hey Dinesh! I think it's best if we preorder the donuts for the office"
+
+
+
+--------
+Note with question to chest
+Morse Code Chart 
+Chest with encoded morse inside 
+    receive: riddle to door - ACROSTIC
+Poem Oh the places you'll go on Door 
+
+---- Open cellar door to main floor ----
+Password to Lounge 
+"The word 'SLOMPS' was invented by which great Linguist of team DMS?"
+
+Amazon 16 Principles - Lounge
+AWS + 3 Chests - Conservatory
+    Receive:
+        - jigsaw final CAT 
+        - "I only love the one right after the second summer"...well that's sure strange! note
+        - "When at a crossroads, I look at the very end" note
+
+
+Poem Love Sonnet 
+Chest many hearts on it - main 
+    receive: Who is attending the dinner? Let's find out: "As great as Alexander The Great"  1/3
+
+Poem Two Roads
+Chest Crossroads "I took the one less traveled by, And that has made all the difference." - Kitchen
+    receive: Who is attending the dinner? Let's find out: "Who am I? DRPTOCU" 2/3
+
+
+ASCII chart - Library
+Chest ASCII character lock - Lounge
+    receive: jigsaw red ball
+
+
+Chest with kitchen, gallery, dining room symbols 
+- number of something at each entrance or around walls - candles!
+- chest with order of plate, painting, food near it 
+    receive: Who is attending the dinner? Let's find out: Avid Montreal Foodie who like Chipotle 3/3
+
+
+Password Door Dining Room 
+ This is a limerick, I see\n 
+ I only will take CSV\n 
+ First name's enough \n 
+ Can't be that tough\n 
+ Just know that the order is key
+
+---- Open Dining Room for Codenames ---- red blue somehow?
+Codenames Puzzle 1 - I accept CSV
+    - DRINK 2 - bottle,lemonade
+        receive: encrypted note 
+    - GALAXY 2 - black hole,saturn
+        receive: encrypted note 
+    - BEE 2 - battery,beijing
+
+Chest Codenames 1  -- password gallery - In the office. Did a presentation on Gather, ended up moving off Gather
+
+---- Open gallery for KMS ----
+Chest Who AM I - jigsaw - Upcoming Wedding! Congratulations!
+
+Camera - password front door
+Lightswitch - password front door
+
+Google Cloud anagram
+or KMS somewhere
+specify which key in GCP project to use
+google
+
+loggeo <CLOUD> <KEY>
+
+Password decrypted to front door 
+
+--- Front door open ----
+Chest Who Am I
+
+
+
+
+Two roads diverged in a yellow wood,\n
+And sorry I could not travel both\n
+And be one traveler, long I stood\n
+And looked down one as far as I could\n
+To where it bent in the undergrowth;\n
+
+I shall be telling this with a sigh\n
+Somewhere ages and ages hence:\n
+Two roads diverged in a wood, and I—\n
+I took the one less traveled by,\n
+And that has made all the difference.\n
+
+Congratulations! \n
+Today is your day.\n
+You're off to Great Places!\n
+You're off and away!\n\n
+
+You have brains in your head.\n
+You have feet in your shoes.\n
+You can steer yourself\n
+any direction you choose.\n
+You're on your own. And you know what you know.\n
+And YOU are the guy who'll decide where to go.\n
+
+Shall I compare thee to a summer’s day?\n
+Thou art more lovely and more temperate:\n
+Rough winds do shake the darling buds of May,\n
+And summer’s lease hath all too short a date;\n
+
+Shall I compare thee to a summer’s day?
+Thou art more lovely and more temperate:
+Rough winds do shake the darling buds of May,
+And summer’s lease hath all too short a date;
+
+Two roads diverged in a yellow wood,
+And sorry I could not travel both
+And be one traveler, long I stood
+And looked down one as far as I could
+To where it bent in the undergrowth;
+
+I shall be telling this with a sigh
+Somewhere ages and ages hence:
+Two roads diverged in a wood, and I—
+I took the one less traveled by,
+And that has made all the difference.
+
+heaps of money
+chest in study accept order
+List of heap insertions
+
+chest with another data structure
+That's a lot of employees attending the dinner tonight...let's order them by who joined first.
+
+lucas - Proposed Frisbee Golf as Team Social. Proceeds to beat everyone in Frisbee Golf. Sus?
+dinesh
+ming
+alex
+robert
+kareem
+randall
+
+kevin - Did a presentation in the office advertising Gather. Stopped using Gather one month later.
+akram
+
+
+Chest with list of heuristics
+
+spanner - spanner
+leaf - leaf
+redis - redBall
+tomcat - cat
+
+
+Final limerick before you leave this place, 
+Now when you all get everything in its place,
+Throw confetti at the door,
+You'll get it right I implore,
+For I know that freedom is something you chase
+ 
+ echo \"voiceTriggers_\":\[\{\"name_\":\"Alexa\",\"supported_\":true,\"isActive_\":true,\"voiceEngine_\":\"Alexa\" | grep "\"voiceTriggers_\":\[{\"name_\":\"Alexa\",\"supported_\":true,\"isActive_\":true",\"voiceEngine_\":\"Alexa\"
+
+ - whiskey alcohol
+ - move boxes closer in aws room, say input number
+ - specify how to input format in study
+ - change prompt DFS
+ - add impassable tiles
+ - $ hint for heap
+
+ - announce how to pick up objects
+
+
+ 
+
+
+
+
