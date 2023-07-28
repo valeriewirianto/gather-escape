@@ -23,11 +23,18 @@ function connectToSpace(game){
       game.subscribeToConnection((connected) => console.log("connected?", connected));
       await game.waitForInit();
       resolve(game.connected);
+      console.log('in')
+      pickupable_object_ids.push('cat')
+      pickupable_object_ids.push('leaf')
+      pickupable_object_ids.push('spanner')
+      pickupable_object_ids.push('laptop')
+      pickupable_object_ids.push('redBall')
     })
 }
 
-connectToSpace(game).then((res) => {
-    if(res){
+connectToSpace(game).then((resolve) => {
+  console.log(resolve)
+    if(resolve){
         return new Promise (async (resolve, reject) => {
             await setUp();
         })
@@ -112,7 +119,7 @@ async function cleanUp(){
     game.deleteObject(MAP_CELLAR, "cellarNoteFromChest")
     game.deleteObject(MAP_CONSERVATORY, "receivedObjectFromChestConservatoryLearn")
     game.deleteObject(MAP_CONSERVATORY, "receivedObjectFromChestConservatoryDive")
-    game.deleteObject(MAP_CONSERVATORY, "cat")
+    game.mapDeleteObjectById(MAP_CONSERVATORY, "cat")
     game.deleteObject(MAP_LOUNGE, "leaf")
     game.deleteObject(MAP_KITCHEN, "receivedObjectFromChestKitchen")
     game.deleteObject(MAP_KITCHEN, "kitchenNoteFromChest")
@@ -132,30 +139,46 @@ async function cleanUp(){
   }
 }
 
-game.subscribeToEvent("playerInteracts", async (data, context) => {
-    let playerInteracts = data.playerInteracts;
+game.subscribeToEvent("playerInteractsWithObject", async (data, context) => {
+    let playerInteracts = data.playerInteractsWithObject;
     let mapId = playerInteracts.mapId;
-    let objId = playerInteracts.objId;
-    let { obj } = game.getObject(objId); // get obj
-    //console.log(data);
-    console.log(obj);
+    let keyId = playerInteracts.key;
+    let obj = game.getObjectByKey(mapId, keyId); // get obj
+    objId = obj.id
 
     if (playerInteracts.dataJson){ // if user has inputted value at password door, check password
         let inputtedPassword = JSON.parse(playerInteracts.dataJson)[objId + "TextboxPlaceholder"];
-        checkPassword(obj, objId, mapId, inputtedPassword)
+        checkPassword(obj, keyId, mapId, inputtedPassword)
     }
 });
 
 
 game.subscribeToEvent(
-  "playerTriggersItem",
-   async ({ playerTriggersItem }, context) => {
-     //console.log(context);
-     let playerId = context.playerId;
-     let closestObjectId = context.player.closestObject
-     let mapId = context.player.map; 
+  "playerTriggersObject",
+   async ({ playerTriggersObject }, context) => {
 
+    console.log("DICT")
+    console.log(pickupable_object_ids)
+  
+     let playerId = context.playerId;
+
+     keyId = playerTriggersObject.key;
+     let mapId = context.player.map;
+     let closestObjectId;
+     try{
+      closestObjectId = game.partialMaps[mapId].objects[keyId].id
+      if (pickupable_object_ids.indexOf(closestObjectId) == -1){
+        return;
+      }
+     }
+     catch(err){
+
+     }
+     console.log(closestObjectId)
+     console.log(keyId)
+     
      if (playerId in dict_player_current_item){ // if player holding an item, drop it
+      
       let obj = dict_player_current_item[playerId];
       let objectId = obj.id;
       let [tileToDropObjX, tileToDropObjY] = findTileInFrontOfPlayer(playerId)
@@ -167,17 +190,16 @@ game.subscribeToEvent(
       delete dict_player_current_item[playerId];
      }
      else if (closestObjectId){ // player not holding item and near a pickupable object
-      
-      // user not allowed to pick up object, exit and do nothing
-      if (pickupable_object_ids.indexOf(closestObjectId) == -1){
-        return;
-      }
+     //else { 
+      let closestObjectId = game.partialMaps[mapId].objects[keyId].id;
       let [frontOfPlayerX, frontOfPlayerY] = findTileInFrontOfPlayer(playerId)
-      console.log(game.getObject(closestObjectId));
-      if (game.getObject(closestObjectId)){
-        let {obj} = game.getObject(closestObjectId, mapId);
+      
+      if (game.partialMaps[mapId].objects[keyId]){
+        console.log('in')
+        let obj = (game.partialMaps[mapId].objects[keyId]);
         let {playerX, playerY} = game.getPlayer(playerId);
         if ((obj.x == frontOfPlayerX && obj.y == frontOfPlayerY) || (obj.x == playerX && obj.y == playerY)){ // if obj directly in front of player
+            console.log('setting')
             game.setItem(closestObjectId, obj.normal, playerId);
             game.deleteObject(mapId, closestObjectId);
             dict_player_current_item[playerId] = obj;
@@ -204,10 +226,11 @@ game.subscribeToEvent(
  });
 
 game.subscribeToEvent("playerShootsConfetti", async (data, context) => {
-  //console.log(context);
+  console.log(context);
   if(context.player.map == MAP_FOYER){
     let inRangeToDoor = [[5, 2], [6, 2], [5, 3], [6, 3], [5, 4], [6, 4]] ;
     let playerCurrentTile =  [context.player.x, context.player.y];
+    console.log(playerCurrentTile)
     inRangeToDoor = JSON.stringify(inRangeToDoor);
     playerCurrentTile = JSON.stringify(playerCurrentTile);
     if((inRangeToDoor.indexOf(playerCurrentTile) != -1) && (context.player.direction == 3) || (context.player.direction == 4)){ // player standing on tile in range of door and facing north
@@ -218,12 +241,15 @@ game.subscribeToEvent("playerShootsConfetti", async (data, context) => {
 });
 
 function checkFoyerPuzzle(){
+  let cat;
+  console.log("CHECK FOYER")
   try{
     let redBall = game.getObject("redBall");
     let leaf = game.getObject("leaf");
     let spanner = game.getObject("spanner");
-    let cat = game.getObject("cat");
+    cat = game.getObject("cat");
     let laptop = game.getObject("laptop");
+    
 
     if( arraysEqual([redBall.obj.x, redBall.obj.y], [5, 7]) && arraysEqual([cat.obj.x, cat.obj.y], [6, 6]) && arraysEqual([leaf.obj.x, leaf.obj.y], [3, 6]) && arraysEqual([spanner.obj.x, spanner.obj.y], [6, 5]) && arraysEqual([laptop.obj.x, laptop.obj.y], [8, 6])){
       console.log("TRUE")
@@ -235,7 +261,7 @@ function checkFoyerPuzzle(){
     }
   }
   catch(e){
-
+    console.log(cat)
   }
   return false;
 }
@@ -252,6 +278,8 @@ function arraysEqual(a, b) {
 }
 
 function returnPickupableObject(x, y, id, normal){
+  console.log("HERE")
+  console.log(id)
         let obj = {
           id: id,
           x: x, 
@@ -263,6 +291,8 @@ function returnPickupableObject(x, y, id, normal){
           height: 1, 
           previewMessage: "Press spacebar to pick up", // this is what shows up in the press x bubble
         };
+
+        console.log(id)
    
         pickupable_object_ids.push(id);
         return obj;
@@ -385,6 +415,7 @@ function placePasswordDoor(mapId, objectId, x, y, headerValue, textboxPlaceholde
         password: password,
       },
     };
+
   game.setObject(mapId, objectId, objPasswordDoor);
   game.setImpassable(mapId, x + 1, y + 1, true)
   game.setImpassable(mapId, x + 2, y + 1, true)
@@ -392,6 +423,7 @@ function placePasswordDoor(mapId, objectId, x, y, headerValue, textboxPlaceholde
 
 // Checks if password user inputted is correct at object <objId>. If yes, will open
 function checkPassword(obj, objId, mapId, inputtedPassword){
+  //console.log(openedObj)
     let properties = obj.properties;
     let correctPassword = properties.password;
     let type = obj.properties.isA;
